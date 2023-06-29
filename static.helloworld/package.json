@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "mdenet-helloworld",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "webpack --mode=development && copyfiles -u 1 \"public/**/*\" dist"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "ace-builds": "^1.14.0"
+  }
+}

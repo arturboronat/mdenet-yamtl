@@ -1,0 +1,3 @@
+.mif-helloworld::before {
+	content: url("./icons/globe.png");
+}

@@ -1,0 +1,18 @@
+services:
+    mdenet-test-activities:
+        image: "nginx:1.23"
+        ports:
+            - "8083:80"
+        volumes:
+            - ./config/nginx.conf:/etc/nginx/nginx.conf
+            - ./config/default.conf:/etc/nginx/conf.d/default.conf
+            - ./helloworld-example:/usr/share/nginx/html
+
+    mdenet-tool-helloworld:
+        image: mdenet-tool-helloworld:latest
+        ports:
+            - "8500:80"
+        build:
+          context: .
+          dockerfile: static.helloworld/Dockerfile
+

@@ -1,0 +1,122 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+ 
+  <parent>
+    <groupId>com.mde-network.ep.toolfunctions</groupId>
+    <artifactId>helloworld-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+    <artifactId>com.mde-network.ep.toolfunctions.helloworld</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+	
+    <packaging>eclipse-plugin</packaging>
+ 
+
+	<repositories>
+	  <repository>
+	      <id>Sonatype</id>
+	      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+	  </repository>
+	     <repository>
+			<id>eclipse</id>
+			<layout>p2</layout>
+			<url>https://download.eclipse.org/releases/2022-12/</url>
+		</repository>      
+    <repository>
+      <id>eclipse-ocl</id>
+      <layout>p2</layout>
+      <url>https://download.eclipse.org/modeling/mdt/ocl/updates/</url>
+    </repository>
+    
+       <repository>
+      <id>emfatic</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/emfatic/update/</url>
+    </repository>
+	<repository>
+		<id>epsilon</id>
+		<layout>p2</layout>
+		<url>http://download.eclipse.org/epsilon/updates/2.4/</url>
+	</repository>       
+    </repositories>
+  
+  <dependencies>
+	  <!-- Dependencies added here will be ignored, add them to the plugin manifest and target  -->
+  </dependencies>
+  
+  	<properties>
+		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+		<epsilon.version>2.4.0</epsilon.version>
+		<tycho-version>3.0.3</tycho-version>		
+	</properties>
+	
+		
+  
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    
+    
+    <plugins>
+	    <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <extensions>true</extensions>
+     </plugin>
+      
+      <plugin>
+		   <groupId>org.eclipse.tycho</groupId>
+		   <artifactId>target-platform-configuration</artifactId>
+		   <version>${tycho-version}</version>
+		   <configuration>
+		      <target>
+		       <file>mdenettool-helloworld.target</file>
+		      </target>
+		   </configuration>
+	   </plugin>
+        
+		
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>11</release>
+        </configuration>
+      </plugin>
+      
+		<plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-dependency-plugin</artifactId>
+		  <version>3.5.0</version>
+		  <executions>
+		    <execution>
+		      <id>unpack-dependencies</id>
+		      <phase>prepare-package</phase>
+		      <goals>
+		        <goal>unpack-dependencies</goal>
+		      </goals>
+		      <configuration>
+		        <includes>**/*</includes>
+		        <excludes>**/META-INF/*.SF,**/META-INF/*.DSA,**/META-INF/*.RSA</excludes>
+		        <outputDirectory>target/classes</outputDirectory>
+		        <overWriteReleases>false</overWriteReleases>
+		        <overWriteSnapshots>true</overWriteSnapshots>
+		      </configuration>
+		    </execution>
+		  </executions>
+		</plugin>
+      
+    </plugins>
+    
+ 
+    
+  </build>
+
+
+
+
+
+</project>

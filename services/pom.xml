@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+        
+  <modelVersion>4.0.0</modelVersion> 
+  <groupId>com.mde-network.ep.toolfunctions</groupId>
+  <artifactId>helloworld-parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+        
+  <dependencyManagement>
+    <dependencies> 
+      <dependency>   
+        <groupId>com.google.cloud</groupId>
+        <artifactId>libraries-bom</artifactId>      
+        <version>15.0.0</version>    
+        <type>pom</type>       
+        <scope>import</scope>
+      </dependency>  
+      <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>5.9.1</version>      
+        <scope>test</scope>
+      </dependency>
+      <dependency>     
+        <groupId>com.google.code.gson</groupId>  
+        <artifactId>gson</artifactId>     
+        <version>2.10.1</version>  
+      </dependency>
+      <dependency>     
+        <groupId>com.mde-network.ep.toolfunctions</groupId>  
+        <artifactId>com.mde-network.ep.toolfunctions.core</artifactId>     
+        <version>0.0.1-SNAPSHOT</version>  
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+   <profiles>    
+    <profile>
+      <id>helloworld</id>
+      <modules>
+            <module>com.mde-network.ep.toolfunctions.helloworld</module>
+            <module>com.mde-network.ep.toolfunctions.helloworldfunction</module>  
+      </modules>
+    </profile>
+   </profiles>
+
+</project>

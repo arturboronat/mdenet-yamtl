@@ -1,0 +1,69 @@
+{
+
+    "activities": [
+
+        {
+
+            "id": "activity-templatetool",
+
+            "title": "Education Platform Template Tool",
+
+            "icon": "helloworld",
+
+            "tools": ["http://127.0.0.1:8500/helloworld_tool.json",
+                       "http://127.0.0.1:8070/epsilon_tool.json" ],
+
+            "layout": {
+
+                    "area": [
+                        ["panel-input", "panel-console"  ]
+                    ]
+
+                },
+
+            "actions": [
+
+                {
+                    "source": "panel-input",
+
+                    "sourceButton": "action-button",
+
+                    "parameters": {
+                        "input": "panel-input"
+                    },
+
+                    "output": "panel-console"
+
+                }
+            ],
+
+
+
+            "panels": [
+
+                {
+                    "id": "panel-input",
+    
+                    "name": "Hello World",
+    
+                    "ref": "helloworld",
+    
+                    "file": "input.txt"
+    
+                },
+
+                {
+    
+                    "id": "panel-console",
+    
+                    "name": "Console",
+    
+                    "ref": "console"
+    
+                }
+
+            ]
+
+        }
+
+] } 
