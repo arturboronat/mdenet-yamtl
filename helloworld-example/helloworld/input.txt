@@ -1,1 +1,0 @@
-Test text that will be echoed back by the helloworld tool service. 

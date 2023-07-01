@@ -1,0 +1,70 @@
+{
+    "activities": [
+        {
+            "id": "activity-yamtl-cd2db",
+            "title": "Model-to-Model Example",
+            "icon": "etl",
+            "tools": [ "http://127.0.0.1:8081/yamtl_tool.json" ],
+            "layout": {
+                    "area": [
+                        ["panel-yamtl", "panel-model"],
+                        ["panel-console", "panel-mm"]
+                    ]
+                },
+            "actions": [
+                {
+                    "source": "panel-yamtl",
+                    "sourceButton": "action-button",
+                    "parameters": {
+                        "trafoGroovy": "panel-yamtl",
+                        "inModel": "panel-smodel",
+                        "inMetamodel": "panel-smm",
+                        "outMetamodel": "panel-tmm"
+                    },
+                    "outModel": "panel-tmodel"
+
+                }
+            ],
+
+
+
+            "panels": [
+                {
+                    "id": "panel-yamtl",
+                    "name": "Transformation(YAMTL)",
+                    "ref": "yamtl",
+                    "file": "CD2DB.groovy"
+                },
+                {
+                    "id": "panel-smodel",
+                    "name": "Source Model",
+                    "ref": "xmi",
+                    "file": "sourceModel.xmi"
+                },
+                {
+                    "id": "panel-smm",
+                    "name": "Source Metamodel",
+                    "ref": "ecore",
+                    "file": "CD.ecore"
+                },
+                {
+                    "id": "panel-tmm",
+                    "name": "Target Metamodel",
+                    "ref": "ecore",
+                    "file": "Relational.ecore"
+                },
+                {
+                    "id": "panel-tmodel",
+                    "name": "Target Model",
+                    "ref": "xmi"
+                },
+                {
+                    "id": "panel-console",
+                    "name": "Console",
+                    "ref": "console"
+                }
+            ]
+
+        }
+
+] } 

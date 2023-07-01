@@ -1,0 +1,38 @@
+{
+"tool": 
+    {
+        "id": "yamtl",
+        "name": "YAMTL",
+        "functions": [
+            {
+                "id": "function-yamtl-m2m",
+                "name": "YAMTL M2M function",
+                "parameters": [ {"name":"trafoGroovy", "type":"string"}, 
+                                {"name":"inMetamodel", "type":"string"},
+                                {"name":"inModel", "type":"string"},
+                                {"name":"outMetamodel", "type":"string"}
+                ],
+                "returnType": "text",
+                "path": "http://127.0.0.1:8500/services/RunYAMTL_m2m_groovy"
+            }
+        ],
+
+        "panelDefs": [
+            {
+                "id": "yamtl",
+                "name": "YAMTL M2M",
+                "panelclass": "ProgramPanel",
+                "icon": "yamtl",
+                "language": "groovy",
+                "buttons" : [ 
+                    { 
+                        "id": "action-button", 
+                        "icon": "run",
+                        "actionfunction": "function-yamtl-m2m",
+                        "hint": "Run the program (Ctrl/Cmd+S)" 
+                      }
+                ]
+            }
+        ]
+    }
+} 

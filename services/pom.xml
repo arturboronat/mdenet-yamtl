@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-        
+  <repositories>
+    <repository>
+      <id>yamtl-repo</id>
+      <url>https://github.com/yamtl/yamtl.github.io/raw/mvn-repo/mvn-repo/snapshot-repo</url>
+    </repository>
+  </repositories>
+
   <modelVersion>4.0.0</modelVersion> 
   <groupId>com.mde-network.ep.toolfunctions</groupId>
-  <artifactId>helloworld-parent</artifactId>
+  <artifactId>yamtl-parent</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
         
@@ -37,10 +43,10 @@
 
    <profiles>    
     <profile>
-      <id>helloworld</id>
+      <id>yamtl_m2m_function</id>
       <modules>
-            <module>com.mde-network.ep.toolfunctions.helloworld</module>
-            <module>com.mde-network.ep.toolfunctions.helloworldfunction</module>  
+            <!-- module>com.mde-network.ep.toolfunctions.helloworld</module -->
+            <module>com.mde-network.ep.toolfunctions.yamtl_m2m_function</module>  
       </modules>
     </profile>
    </profiles>

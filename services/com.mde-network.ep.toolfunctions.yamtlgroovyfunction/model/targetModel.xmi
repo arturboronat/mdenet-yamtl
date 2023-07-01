@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fmaRelational="org.fma.Relational">
+  <fmaRelational:Table name="Item">
+    <col name="objectId"/>
+  </fmaRelational:Table>
+  <fmaRelational:Table name="Order">
+    <col name="objectId"/>
+  </fmaRelational:Table>
+  <fmaRelational:Table name="Customer">
+    <col name="objectId"/>
+  </fmaRelational:Table>
+</xmi:XMI>

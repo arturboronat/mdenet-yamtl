@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/yamtl/src/test/emf-gen/" editDirectory="/emf.persistence.experiments.edit/src/main/emf-gen"
+    editorDirectory="/emf.persistence.experiments.editor/src/main/emf-gen" modelPluginID="emf.persistence.experiments"
+    modelName="CD" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    testsDirectory="/emf.persistence.experiments.tests/src/main/emf-gen" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>CD.ecore</foreignModel>
+  <genPackages prefix="CD" disposableProviderFactory="true" ecorePackage="CD.ecore#/">
+    <genDataTypes ecoreDataType="CD.ecore#//Boolean"/>
+    <genDataTypes ecoreDataType="CD.ecore#//Integer"/>
+    <genDataTypes ecoreDataType="CD.ecore#//String"/>
+    <genClasses image="false" ecoreClass="CD.ecore#//NamedElt">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CD.ecore#//NamedElt/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="CD.ecore#//Classifier"/>
+    <genClasses ecoreClass="CD.ecore#//DataType"/>
+    <genClasses ecoreClass="CD.ecore#//Class">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CD.ecore#//Class/super"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CD.ecore#//Class/attr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CD.ecore#//Class/isAbstract"/>
+    </genClasses>
+    <genClasses ecoreClass="CD.ecore#//Attribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CD.ecore#//Attribute/multiValued"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CD.ecore#//Attribute/type"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference CD.ecore#//Attribute/owner"/>
+    </genClasses>
+    <genClasses ecoreClass="CD.ecore#//Package">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CD.ecore#//Package/classifiers"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
