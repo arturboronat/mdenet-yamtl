@@ -7,7 +7,7 @@ RUN cd /usr/src && git clone https://github.com/mdenet/platformtools.git
 RUN cd /usr/src/platformtools/services && mvn clean install -Pall
 
 #Copy yamtlgroovy toolfunction source and its dependencies
-COPY services/com.mde-network.ep.toolfunctions.yamtlgroovyfunction /usr/src/toolfunctions/com.mde-network.ep.toolfunctions.yamtlgroovyfunction
+COPY services/com.mde-network.ep.toolfunctions.yamtl_m2m_function /usr/src/toolfunctions/com.mde-network.ep.toolfunctions.yamtl_m2m_function
 COPY services/pom.xml /usr/src/toolfunctions/
 
 WORKDIR /usr/src/toolfunctions
