@@ -29,7 +29,7 @@ wait_for_service() {
 
 # Functions for running yamtlgroovy 
 cd com.mde-network.ep.toolfunctions.yamtl_m2m_function
-mvn -B -o function:run -Drun.functionTarget=com.mdenetnetwork.ep.toolfunctions.yamtlGroovy.RunYAMTL_m2m_groovy -Drun.port=8001 &
+mvn -B -o function:run -Drun.functionTarget=com.mdenetnetwork.ep.toolfunctions.yamtl_m2m_function.RunYAMTL_m2m_groovy -Drun.port=8001 &
 wait_for_service validate 127.0.0.1 8001
 cd ..
 

@@ -1,4 +1,4 @@
-package com.mdenetnetwork.ep.toolfunctions.yamtlGroovy
+package com.mdenetnetwork.ep.toolfunctions.yamtl_m2m_function
 
 class StringUtil {
 	def static String removeEscapeChars(String text) {

@@ -1,4 +1,4 @@
-package com.mdenetnetwork.ep.toolfunctions.yamtlGroovy
+package com.mdenetnetwork.ep.toolfunctions.yamtl_m2m_function
 
 import static org.junit.jupiter.api.Assertions.assertEquals
 
@@ -6,15 +6,15 @@ import org.junit.jupiter.api.Test
 
 import com.google.gson.Gson
 import com.google.gson.JsonObject
-import com.mdenetnetwork.ep.toolfunctions.yamtlGroovy.RunYAMTL_m2m_groovy
-import com.mdenetnetwork.ep.toolfunctions.yamtlGroovy.StringUtil
+import com.mdenetnetwork.ep.toolfunctions.yamtl_m2m_function.RunYAMTL_m2m_groovy
+import com.mdenetnetwork.ep.toolfunctions.yamtl_m2m_function.StringUtil
 
 import groovy.json.JsonBuilder
 
 class YAMTL_m2m_test {
 
     @Test
-    void testOutputIsGreetingWithInputParameterAppended() throws Exception {
+    void test_m2m_cd2db() throws Exception {
 
 		def requestBuilder = new JsonBuilder()
 		requestBuilder {
