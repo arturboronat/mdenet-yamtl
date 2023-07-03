@@ -43,6 +43,14 @@
 	        <artifactId>maven-compiler-plugin</artifactId>
 	        <version>3.8.1</version>
 	      </plugin>
+	      <plugin>
+	        <groupId>com.google.cloud.functions</groupId>
+	        <artifactId>function-maven-plugin</artifactId>
+	        <version>0.9.5</version>
+	         <configuration>
+	            <!--functionTarget>com.mdenetnetwork.ep. ... </functionTarget-->
+	        </configuration>
+	      </plugin>
 	    </plugins>
 	    
 	  </build>
