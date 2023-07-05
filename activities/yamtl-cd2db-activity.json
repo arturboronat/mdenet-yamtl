@@ -4,11 +4,13 @@
             "id": "activity-yamtl-cd2db",
             "title": "Model-to-Model Example",
             "icon": "etl",
-            "tools": [ "http://127.0.0.1:8081/yamtl_tool.json" ],
+            "tools": [ "http://127.0.0.1:8070/epsilon_tool.json", 
+                       "http://127.0.0.1:8073/emf_tool.json", 
+                       "http://127.0.0.1:8500/yamtl_tool.json" ],
             "layout": {
                     "area": [
-                        ["panel-yamtl", "panel-model"],
-                        ["panel-console", "panel-mm"]
+                        ["panel-yamtl", "panel-smodel", "panel-tmodel"],
+                        ["panel-console", "panel-smm", "panel-tmm"]
                     ]
                 },
             "actions": [
