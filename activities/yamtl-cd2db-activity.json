@@ -23,7 +23,7 @@
                         "inMetamodel": "panel-smm",
                         "outMetamodel": "panel-tmm"
                     },
-                    "outModel": "panel-tmodel"
+                    "output": "panel-tmodel"
 
                 }
             ],

@@ -7,10 +7,11 @@
             {
                 "id": "function-yamtl-m2m",
                 "name": "YAMTL M2M function",
-                "parameters": [ {"name":"trafoGroovy", "type":"string"}, 
-                                {"name":"inMetamodel", "type":"string"},
-                                {"name":"inModel", "type":"string"},
-                                {"name":"outMetamodel", "type":"string"}
+                "parameters": [ {"name":"trafoGroovy", "type":"groovy"}, 
+                                {"name":"inMetamodel", "type":"ecore"},
+                                {"name":"inModel", "type":"xmi"},
+                                {"name":"outMetamodel", "type":"ecore"},
+                                {"name": "language", "type":"string"}
                 ],
                 "returnType": "text",
                 "path": "http://127.0.0.1:8500/services/RunYAMTL_m2m_groovy"
