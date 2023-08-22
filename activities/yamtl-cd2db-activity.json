@@ -9,8 +9,8 @@
                        "http://127.0.0.1:8500/yamtl_tool.json" ],
             "layout": {
                     "area": [
-                        ["panel-yamtl", "panel-smodel", "panel-tmodel"],
-                        ["panel-console", "panel-smm", "panel-tmm"]
+                        ["panel-yamtl", "panel-smm", "panel-tmm"],
+                        ["panel-console", "panel-smodel", "panel-tmodel"]
                     ]
                 },
             "actions": [
