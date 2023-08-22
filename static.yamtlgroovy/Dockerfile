@@ -6,6 +6,8 @@ FROM maven:3.8.5-openjdk-17 AS toolfunctions
 RUN cd /usr/src && git clone https://github.com/mdenet/platformtools.git
 RUN cd /usr/src/platformtools/services && mvn clean install -Pall
 
+ENV LANG C.UTF-8
+
 #Copy yamtlgroovy toolfunction source and its dependencies
 COPY services/com.mde-network.ep.toolfunctions.yamtl_m2m_function /usr/src/toolfunctions/com.mde-network.ep.toolfunctions.yamtl_m2m_function
 COPY services/pom.xml /usr/src/toolfunctions/

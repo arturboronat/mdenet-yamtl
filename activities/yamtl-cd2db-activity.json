@@ -1,8 +1,8 @@
 {
     "activities": [
         {
-            "id": "activity-yamtl-cd2db",
-            "title": "Model-to-Model Example",
+            "id": "yamtl-cd2db-activity",
+            "title": "Model-to-Model CD2DB Example",
             "icon": "etl",
             "tools": [ "http://127.0.0.1:8070/epsilon_tool.json", 
                        "http://127.0.0.1:8073/emf_tool.json", 

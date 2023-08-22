@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "mdenet-yamtl-m2m",
+  "name": "yamtl-m2m",
   "version": "0.0.1",
   "scripts": {
     "build": "webpack --mode=development && copyfiles -u 1 \"public/**/*\" dist"

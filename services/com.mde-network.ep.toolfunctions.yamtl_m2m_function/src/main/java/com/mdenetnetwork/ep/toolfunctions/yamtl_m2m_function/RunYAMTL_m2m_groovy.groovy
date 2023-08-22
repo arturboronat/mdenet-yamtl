@@ -31,46 +31,69 @@ class RunYAMTL_m2m_groovy extends MdeNetToolFunction {
 	 */ 
     @Override
     void serviceImpl(JsonObject request, JsonObject response) {
-		String trafoGroovy = StringUtil.removeEscapeChars(request['trafoGroovy'].toString())
-		def matcher = (trafoGroovy =~ /(?s).*class\s+(\w+)\s+extends\s+YAMTLModule.*/)
-		String className = matcher[0][1]
-		if (!className) throw new RuntimeException("The script must contain a YAMTLModule specialization defining a model transformation.")
 		
-			
-		// create tmp file for transformation under ./model
-		initDirectory(className)
-			
-			
-		GroovyClassLoader classLoader = new GroovyClassLoader();
-		Class<?> xformModuleClass = classLoader.parseClass(new GroovyCodeSource(trafoGroovy, ("${className}.groovy"), className));
+		println("""
+RECEIVED REQUEST:
 
-		// running YAMTL using dynamic EMF
+request: $request
+
+""")
 		
-		// Load metamodels
-		def inPk = loadMetamodel(className, request, "inMetamodel", xformModuleClass) as EPackage
-		def outPk = loadMetamodel(className, request, "outMetamodel", xformModuleClass) as EPackage
+		try {
+			String trafoGroovy = StringUtil.removeEscapeChars(request['trafoGroovy'].toString())
+			def matcher = (trafoGroovy =~ /(?s).*class\s+(\w+)\s+extends\s+YAMTLModule.*/)
+			String className = matcher[0][1]
+			if (!className) throw new RuntimeException("The script must contain a YAMTLModule specialization defining a model transformation.")
+			
+				
+			// create tmp file for transformation under ./model
+			initDirectory(className)
+				
+				
+			GroovyClassLoader classLoader = new GroovyClassLoader();
+			Class<?> xformModuleClass = classLoader.parseClass(new GroovyCodeSource(trafoGroovy, ("${className}.groovy"), className));
+	
+			// running YAMTL using dynamic EMF
+			
+			// Load metamodels
+			def inPk = loadMetamodel(className, request, "inMetamodel", xformModuleClass) as EPackage
+			def outPk = loadMetamodel(className, request, "outMetamodel", xformModuleClass) as EPackage
+			
+			// Initialise engine
+			def xform = xformModuleClass.newInstance(inPk, outPk) as YAMTLModule
+			YAMTLGroovyExtensions_dynamicEMF.init(xform)
+			
+			// Load input model
+			def inDomainName = xform.getInDomains().find { it.value == inPk.getNsURI() }.key
+			String inModelPath = "./model/${className}/inModel.xmi"
+			def file = new File(inModelPath)
+			file << StringUtil.removeEscapeChars(request['inModel'].toString()) 
+			xform.loadInputModels([(inDomainName):inModelPath])
+			
+			// Execute transformations
+			xform.execute()
+			
+			// Get the output model
+			def outDomainName = xform.getOutDomains().find { it.value == outPk.getNsURI() }.key
+			String outModelPath = "./model/${className}/outModel.xmi"
+			xform.saveOutputModels([(outDomainName):outModelPath])
+			
+			// Return the xmi contents
+			response.addProperty("outModel", new File(outModelPath).text )
 		
-		// Initialise engine
-		def xform = xformModuleClass.newInstance(inPk, outPk) as YAMTLModule
-		YAMTLGroovyExtensions_dynamicEMF.init(xform)
-		
-		// Load input model
-		def inDomainName = xform.getInDomains().find { it.value == inPk.getNsURI() }.key
-		String inModelPath = "./model/${className}/inModel.xmi"
-		def file = new File(inModelPath)
-		file << StringUtil.removeEscapeChars(request['inModel'].toString()) 
-		xform.loadInputModels([(inDomainName):inModelPath])
-		
-		// Execute transformations
-		xform.execute()
-		
-		// Get the output model
-		def outDomainName = xform.getOutDomains().find { it.value == outPk.getNsURI() }.key
-		String outModelPath = "./model/${className}/outModel.xmi"
-		xform.saveOutputModels([(outDomainName):outModelPath])
-		
-		// Return the xmi contents
-		response.addProperty("outModel", new File(outModelPath).text );
+			
+			println("""
+SENT RESPONSE
+
+$response
+""")
+
+
+			
+		} catch(Exception e) {
+			println(e.message)
+		//	response.addProperty("outModel", e.message);)
+		}
     }
 	
 	def loadMetamodel(String className, JsonObject request, String requestFieldName, Class<?> xform ) {

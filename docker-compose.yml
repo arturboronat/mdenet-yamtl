@@ -9,7 +9,7 @@ services:
             - ./activities:/usr/share/nginx/html
 
     mdenet-tool-yamtl:
-        image: mdenet-tool-yamtl:latest
+        image: yamtl-m2m:latest
         ports:
             - "8500:80"
         build:
