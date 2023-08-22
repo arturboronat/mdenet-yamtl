@@ -1,6 +1,8 @@
 package com.mdenetnetwork.ep.toolfunctions.yamtl_m2m_function
 
 import org.eclipse.emf.ecore.EPackage
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 import com.google.gson.JsonObject
 import com.mdenetnetwork.ep.toolfunctions.core.MdeNetToolFunction
@@ -10,7 +12,8 @@ import yamtl.core.YAMTLModule
 import yamtl.groovy.YAMTLGroovyExtensions_dynamicEMF
 
 class RunYAMTL_m2m_groovy extends MdeNetToolFunction {
-
+	private static final Logger logger = LoggerFactory.getLogger(RunYAMTL_m2m_groovy.class);
+	
 	/**
 	 * 
 	 * Function that executes basic M2M transformation where one model is received as input and 
@@ -32,12 +35,7 @@ class RunYAMTL_m2m_groovy extends MdeNetToolFunction {
     @Override
     void serviceImpl(JsonObject request, JsonObject response) {
 		
-		println("""
-RECEIVED REQUEST:
-
-request: $request
-
-""")
+		logger.info("Received request: ${request}")
 		
 		try {
 			String trafoGroovy = StringUtil.removeEscapeChars(request['trafoGroovy'].toString())
@@ -79,20 +77,13 @@ request: $request
 			xform.saveOutputModels([(outDomainName):outModelPath])
 			
 			// Return the xmi contents
-			response.addProperty("outModel", new File(outModelPath).text )
-		
+			response.addProperty("output", new File(outModelPath).text )
+			//response.addProperty("generatedText", xform.toStringStats())
 			
-			println("""
-SENT RESPONSE
+			logger.info("Generated response: ${response}");
 
-$response
-""")
-
-
-			
 		} catch(Exception e) {
-			println(e.message)
-		//	response.addProperty("outModel", e.message);)
+			response.addProperty("output", e.message )
 		}
     }
 	
