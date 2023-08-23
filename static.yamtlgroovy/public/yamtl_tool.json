@@ -8,9 +8,9 @@
                 "id": "function-yamtl-m2m",
                 "name": "YAMTL M2M function",
                 "parameters": [ {"name":"trafoGroovy", "type":"groovy"}, 
-                                {"name":"inMetamodel", "type":"ecore"},
+                                {"name":"inMetamodel", "type":"emfatic"},
                                 {"name":"inModel", "type":"xmi"},
-                                {"name":"outMetamodel", "type":"ecore"},
+                                {"name":"outMetamodel", "type":"emfatic"},
                                 {"name": "language", "type":"string"}
                 ],
                 "returnType": "text",
