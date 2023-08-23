@@ -88,10 +88,16 @@ class RunYAMTL_m2m_groovy extends MdeNetToolFunction {
     }
 	
 	def loadMetamodel(String className, JsonObject request, String requestFieldName, Class<?> xform ) {
-		def metamodelXmi = request[requestFieldName] as String
+		def metamodelContent = request[requestFieldName] as String
+		metamodelContent = StringUtil.removeEscapeChars(metamodelContent)
+		
 		String metamodelPath = "./model/${className}/${requestFieldName}_metamodel.ecore"
+		if (metamodelContent.startsWith("@namespace")) {
+			metamodelPath = "./model/${className}/${requestFieldName}_metamodel.emf"
+		}
+		
 		def file = new File(metamodelPath)
-		file << StringUtil.removeEscapeChars(metamodelXmi)
+		file << metamodelContent
 		def metamodel = YAMTLModule.loadMetamodel(metamodelPath)
 		metamodel
 	}

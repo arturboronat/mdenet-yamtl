@@ -99,13 +99,14 @@
         <dependency>
 	        <groupId>yamtl</groupId>
 	        <artifactId>yamtl</artifactId>
-	        <version>0.4.0</version>
+	        <version>0.4.7</version>
 	    </dependency>
+	    <!--
 	    <dependency>
 	        <groupId>yamtl</groupId>
 	        <artifactId>untyped-models</artifactId>
 	        <version>0.0.25</version>
-	    </dependency>
+	    </dependency>-->
 	    <dependency>
 	        <groupId>org.eclipse.emf</groupId>
 	        <artifactId>org.eclipse.emf.ecore</artifactId>

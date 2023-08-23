@@ -19,9 +19,9 @@ class YAMTL_m2m_test {
 		def requestBuilder = new JsonBuilder()
 		requestBuilder {
 			trafoGroovy 	new File('./model/CD2DB.groovy').text
-			inMetamodel 	new File('./model/CD.ecore').text
+			inMetamodel 	new File('./model/CD.emf').text
 			inModel 		new File('./model/sourceModel.xmi').text
-			outMetamodel 	new File('./model/Relational.ecore').text
+			outMetamodel 	new File('./model/Relational.emf').text
 		}
 		Gson gson = new Gson()
 		JsonObject request = gson.fromJson(requestBuilder.toString(), JsonObject.class)
@@ -33,6 +33,6 @@ class YAMTL_m2m_test {
 		
         // Check the result
 		def expectedOutput = new File('./model/targetModel.xmi').text
-        assertEquals(expectedOutput, StringUtil.removeEscapeChars( response['outModel'].toString() ))
+        assertEquals(expectedOutput, StringUtil.removeEscapeChars( response['output'].toString() ))
     }
 }

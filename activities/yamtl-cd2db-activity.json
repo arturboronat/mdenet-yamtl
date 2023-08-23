@@ -5,6 +5,7 @@
             "title": "Model-to-Model CD2DB Example",
             "icon": "etl",
             "tools": [ "http://127.0.0.1:8070/epsilon_tool.json", 
+                        "http://127.0.0.1:8070/emfatic/emfatic_tool.json",
                        "http://127.0.0.1:8073/emf_tool.json", 
                        "http://127.0.0.1:8500/yamtl_tool.json" ],
             "layout": {
@@ -46,14 +47,14 @@
                 {
                     "id": "panel-smm",
                     "name": "Source Metamodel",
-                    "ref": "ecore",
-                    "file": "CD.ecore"
+                    "ref": "emfatic",
+                    "file": "CD.emf"
                 },
                 {
                     "id": "panel-tmm",
                     "name": "Target Metamodel",
-                    "ref": "ecore",
-                    "file": "Relational.ecore"
+                    "ref": "emfatic",
+                    "file": "Relational.emf"
                 },
                 {
                     "id": "panel-tmodel",
