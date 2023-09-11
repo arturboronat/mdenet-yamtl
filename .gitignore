@@ -2,3 +2,4 @@ node_modules/
 bin/
 *.prefs
 **/target/
+.DS_Store
