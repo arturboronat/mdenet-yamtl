@@ -1,6 +1,11 @@
 # syntax=docker/dockerfile:1
 
-FROM maven:3.8.5-openjdk-17 AS toolfunctions
+FROM maven:3.8.5-openjdk-17-slim AS toolfunctions
+
+# Install Git
+RUN apt-get update && \
+    apt-get install -y git && \
+    rm -rf /var/lib/apt/lists/*
 
 # Build core mdenet tool dependencies
 RUN cd /usr/src && git clone https://github.com/yamtl/platformtools.git
