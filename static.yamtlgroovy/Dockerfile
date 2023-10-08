@@ -3,8 +3,8 @@
 FROM maven:3.8.5-openjdk-17 AS toolfunctions
 
 # Build core mdenet tool dependencies
-RUN cd /usr/src && git clone https://github.com/mdenet/platformtools.git
-RUN cd /usr/src/platformtools/services && mvn clean install -Pall
+RUN cd /usr/src && git clone https://github.com/yamtl/platformtools.git
+RUN cd /usr/src/platformtools/services && mvn clean install -Pcore
 
 ENV LANG C.UTF-8
 
