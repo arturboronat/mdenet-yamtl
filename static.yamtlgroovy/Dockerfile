@@ -48,39 +48,6 @@ COPY static.yamtlgroovy .
 
 RUN npm install; npm run build; chmod -R 755 dist/
 
-
-# FROM nginx:1.24.0-bullseye AS toolservice
-
-# # Needed to avoid prompts blocking the build process
-# ENV DEBIAN_FRONTEND=noninteractive
-
-# # Needed for Cloud Build
-# ENV PORT=80
-
-# # Install Python
-# RUN apt-get update \
-#     && apt-get install -y python3-minimal openjdk-17-jdk maven tini netcat \
-#     && rm -rf /var/lib/apt/lists/*
-
-# # Copy built tool and sources
-# COPY --from=toolfunctions /root/.m2 /root/.m2
-# COPY --from=toolfunctions /usr/src/toolfunctions /toolservice
-
-# # Copy files for webserver
-# COPY static.yamtlgroovy/nginx.conf.template /etc/nginx.conf.template
-
-# RUN rm -r /usr/share/nginx/html/*
-# COPY --from=toolstaticbuild /usr/src/mdenet-tool/dist /usr/share/nginx/html
-
-# WORKDIR /toolservice
-
-
-# # Copy start script and make it executable
-# ADD static.yamtlgroovy/start.sh /
-# RUN chmod +x /start.sh
-
-# ENTRYPOINT ["/usr/bin/tini", "--", "/start.sh"]
-
 # Use Alpine-based Nginx
 FROM nginx:1.24.0-alpine AS toolservice
 
